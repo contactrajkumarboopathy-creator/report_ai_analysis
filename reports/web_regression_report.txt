@@ -1,0 +1,41 @@
+======================================================================
+              ENTERPRISE QA AUTOMATION REGRESSION RUN
+======================================================================
+Date/Time: 2026-05-17 10:14:22
+Environment: STAGE-02
+Framework: Python / Playwright-Pytest
+Total Executed: 45 | Passed: 42 | Failed: 2 | Skipped: 1
+======================================================================
+
+[PASSED] UI_TEST_01: test_user_authentication_valid_login
+[PASSED] UI_TEST_02: test_navigation_sidebar_links_render
+[SKIPPED] UI_TEST_03: test_payment_gateway_braintree (Reason: Sandbox environment down)
+
+----------------------------------------------------------------------
+[FAILURE] UI_TEST_04: test_e2e_checkout_flow_as_guest
+----------------------------------------------------------------------
+Stacktrace:
+Traceback (most recent call last):
+  File "src/tests/e2e/test_checkout.py", line 42, in test_e2e_checkout_flow_as_guest
+    page.locator("button#submit-order-final").click()
+  File "site-packages/playwright/_impl/_locator.py", line 418, in click
+    raise TimeoutError(f"Timeout {timeout}ms exceeded while waiting for element locator('button#submit-order-final')")
+playwright._impl._errors.TimeoutError: Timeout 10000ms exceeded while waiting for element locator('button#submit-order-final')
+    - Screen state saved: screenshots/failure_UI_TEST_04.png
+    - DOM Diagnostic Note: The element ID was expected to be 'button#submit-order-final', but live inspection shows an active alternative DOM attribute text mapping 'button[data-qa="btn-checkout-confirm"]' modified in build v2.4.1.
+
+----------------------------------------------------------------------
+[FAILURE] UI_TEST_05: test_user_profile_avatar_upload
+----------------------------------------------------------------------
+Stacktrace:
+Traceback (most recent call last):
+  File "src/tests/user/test_profile.py", line 87, in test_user_profile_avatar_upload
+    assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+AssertionError: Expected 200, got 500
+    - Captured Stdout/Stderr:
+      [DEBUG] Uploading file: resources/avatar_sample.png (Size: 4.2MB)
+      [API SERVER ERROR LOG]: "java.lang.NullPointerException: Cannot invoke 'String.toLowerCase()' because the return value of 'com.app.storage.S3Service.getFileExtension(String)' is null at com.app.controllers.UploadController.uploadAvatar(UploadController.java:114)"
+
+======================================================================
+                  END OF TEST RUN EXECUTION SUMMARY
+======================================================================
