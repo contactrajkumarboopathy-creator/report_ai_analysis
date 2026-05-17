@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Test Report Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 AI Test Report Analyzer</h1>
+                <p>Upload your test report and get AI-powered analysis</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-icon">📄</div>
+                    <h2>Upload Test Report</h2>
+                    
+                    <form id="uploadForm" class="upload-form">
+                        <!-- File Input -->
+                        <div class="form-group">
+                            <label for="fileInput" class="file-label">
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="fileInput" name="file" accept=".txt,.log,.json,.csv,.md" required>
+                                    <span class="file-button">Choose File</span>
+                                </div>
+                            </label>
+                            <p class="file-help">Supported formats: TXT, LOG, JSON, CSV, MD (Max 10MB)</p>
+                            <p id="fileName" class="file-name"></p>
+                        </div>
+
+                        <!-- Model Selection -->
+                        <div class="form-group">
+                            <label for="modelSelect">AI Model:</label>
+                            <select id="modelSelect" name="model" required>
+                                <option value="gemini">Google Gemini</option>
+                                <option value="openai">OpenAI (if available)</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submitBtn" class="submit-btn">
+                            <span>Analyze Report</span>
+                        </button>
+                    </form>
+
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="loading-spinner hidden">
+                        <div class="spinner"></div>
+                        <p>Analyzing your report...</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="error-message hidden"></div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="results-card">
+                    <div class="results-header">
+                        <h2>📋 Analysis Results</h2>
+                        <button id="closeResults" class="close-btn">&times;</button>
+                    </div>
+
+                    <!-- File Info -->
+                    <div class="file-info">
+                        <div class="info-row">
+                            <span class="info-label">Filename:</span>
+                            <span id="resultFileName" class="info-value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Model Used:</span>
+                            <span id="resultModel" class="info-value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Timestamp:</span>
+                            <span id="resultTime" class="info-value"></span>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Content -->
+                    <div class="analysis-content">
+                        <h3>AI Analysis</h3>
+                        <div id="analysisText" class="analysis-text"></div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="results-actions">
+                        <button id="downloadBtn" class="download-btn">
+                            ⬇️ Download Results
+                        </button>
+                        <button id="copyBtn" class="copy-btn">
+                            📋 Copy to Clipboard
+                        </button>
+                        <button id="newAnalysisBtn" class="new-btn">
+                            🔄 New Analysis
+                        </button>
+                    </div>
+
+                    <!-- Copy Feedback -->
+                    <div id="copyFeedback" class="copy-feedback hidden">
+                        ✓ Copied to clipboard!
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h3>ℹ️ How it works</h3>
+                    <ol>
+                        <li><strong>Upload</strong> your test report (TXT, LOG, JSON, CSV, or MD)</li>
+                        <li><strong>Select</strong> your preferred AI model</li>
+                        <li><strong>Wait</strong> for the AI to analyze your report</li>
+                        <li><strong>Review</strong> the analysis with insights and recommendations</li>
+                        <li><strong>Download</strong> the results for your records</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎯 What you'll get</h3>
+                    <ul>
+                        <li>Execution Coverage Overview</li>
+                        <li>Error Root Cause Analysis</li>
+                        <li>Actionable Code & Infrastructure Recommendations</li>
+                        <li>AI-powered insights from a Principal QA perspective</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 AI Test Report Analyzer | Powered by Google Gemini & OpenAI</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

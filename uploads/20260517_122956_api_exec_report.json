@@ -1,0 +1,49 @@
+{
+  "suite_name": "Core Microservices API Suite",
+  "execution_timestamp": "2026-05-17T06:21:00Z",
+  "environment": "UAT-Cloud-01",
+  "summary": {
+    "total_tests": 120,
+    "passed": 119,
+    "failed": 1,
+    "skipped": 0
+  },
+  "results": [
+    {
+      "test_id": "API_AUTH_001",
+      "name": "Verify OAuth2 Token Generation with Valid Claims",
+      "status": "PASSED",
+      "duration_ms": 142
+    },
+    {
+      "test_id": "API_PAY_044",
+      "name": "Verify Third-Party Core Banking Synchronization Ledger",
+      "status": "FAILED",
+      "duration_ms": 5031,
+      "failure_details": {
+        "error_type": "GatewayTimeoutError",
+        "message": "Gateway timed out while forwarding connection downriver to third-party mocking tier.",
+        "request": {
+          "endpoint": "/api/v2/ledger/sync",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json",
+            "X-Correlation-ID": "b911a3d3-f09b-4e1b-bc54-5dbfaee781cc"
+          },
+          "payload": {
+            "account_id": "ACC-99821",
+            "amount": 1500.00,
+            "currency": "USD"
+          }
+        },
+        "response": {
+          "status_code": 504,
+          "body": {
+            "error": "Gateway Timeout",
+            "message": "The upstream server failed to respond within the designated window of 5000ms. Check proxy network policy bindings."
+          }
+        }
+      }
+    }
+  ]
+}
