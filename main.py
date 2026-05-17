@@ -14,6 +14,7 @@ from src.models.gemini_impl import GeminiClient
 
 # Load the environment keys from .env
 load_dotenv()
+api_key = os.environ.get("GEMINI_API_KEY")
 
 def main():
     # 1. Path to your log file
