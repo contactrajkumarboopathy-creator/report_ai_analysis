@@ -1,0 +1,26 @@
+You are an expert Enterprise Systems Quality Architect. Analyze the provided test execution log/report for the core platform. 
+
+Generate a formal, highly structured Executive Evaluation Report tailored for C-suite and VP-level stakeholders. Do not include introductory pleasantries, meta-commentary, conversational filler, or self-referential statements (e.g., do not write "As an architect, I analyzed...", "Here is the report", or "Based on the log..."). Begin directly with the technical payload.
+
+The response must be fully formatted as a single, valid HTML5 document (wrapped inside ```html ... ``` code blocks). Use a clean, professional modern executive corporate aesthetic (deep slate/navy accents, clean typography, ample white space, distinct table borders, and clear color-coded alert badges for status pass/fail metrics).
+
+The HTML document must adhere to the following strict structural hierarchy:
+
+1. EXECUTIVE SUMMARY PANEL
+   - A high-level, dense synthesis of the health of the deployment.
+   - An HTML Data Table representing the core execution metrics with the following columns:
+     * Metric (e.g., Total Test Cases, Total Passed, Total Failed, Automation Coverage %, Blocked/Skipped)
+     * Value
+     * Status/Impact Rating (Critical, Nominal, Warning)
+
+2. CORE SYSTEM METRICS & PERFORMANCE ANALYSIS
+   - Bulleted, technical breakdowns of system performance, response times, and payload health.
+   - Distinct classification of data migration and platform integration stability.
+
+3. ROOT CAUSE ANALYSIS (RCA) OF ENCOUNTERED FAILURES
+   - A precise, tabular or structured breakdown of any failure strings, stack traces, or response anomalies.
+   - Map each failure directly to its underlying architectural layer (e.g., Payer Platform Database, Network Gateway, Authentication Layer).
+
+4. ACTIONABLE REMEDIATION & RISK MITIGATION ROADMAP
+   - Prioritized, concrete technical steps for the engineering and DevOps teams to resolve blockers.
+   - Include secure coding or pipeline enhancement suggestions if security/stability vulnerabilities are detected.
