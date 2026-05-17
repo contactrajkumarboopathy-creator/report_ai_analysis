@@ -105,7 +105,9 @@ downloadBtn.addEventListener('click', async function() {
 
     const downloadData = {
         filename: currentAnalysis.filename,
-        content: currentAnalysis.content
+        content: currentAnalysis.content,
+        model: currentAnalysis.model,
+        timestamp: currentAnalysis.timestamp
     };
 
     try {
@@ -123,7 +125,7 @@ downloadBtn.addEventListener('click', async function() {
 
         // Get filename from response headers
         const contentDisposition = response.headers.get('Content-Disposition');
-        let filename = 'analysis_result.txt';
+        let filename = 'analysis_result.html';
         if (contentDisposition) {
             const match = contentDisposition.match(/filename="?([^"]+)"?/);
             if (match) filename = match[1];

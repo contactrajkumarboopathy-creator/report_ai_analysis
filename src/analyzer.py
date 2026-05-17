@@ -14,6 +14,14 @@ class TestReportAnalyzer:
         with open(file_path, "r", encoding="utf-8") as f:
             return f.read()
 
+    def load_executive_prompt(self, file_path="config/config_executive_report_prompt.txt"):
+        """Reads the external system prompt from the configuration directory."""
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Missing prompt configuration file at: {file_path}")
+
+        with open(file_path, "r", encoding="utf-8") as file:
+            return file.read()
+
     def run_analysis(self, report_path: str):
         try:
             report_data = self.load_report(report_path)
@@ -21,11 +29,7 @@ class TestReportAnalyzer:
             return f"Error loading file: {e}"
 
         # Construct a strong, contextual system instruction for the AI
-        system_instruction = (
-            "You are a Principal QA Automation Architect. Analyze the provided test report. "
-            "Provide a summary with: 1) Execution Coverage Overview, "
-            "2) Error Root Cause Analysis, and 3) Actionable Code/Infrastructure Resolutions."
-        )
+        system_instruction = self.load_executive_prompt()
 
         print(f"🤖 Sending data to {self.model_client.__class__.__name__}...")
         return self.model_client.generate_summary(system_instruction, report_data)
